@@ -18,7 +18,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import net.progresstransformer.android.R;
 import net.progresstransformer.android.transfer.TransferService;
-import net.progresstransformer.android.ui.IntroActivity;
 import net.progresstransformer.android.ui.settings.SettingsActivity;
 import net.progresstransformer.android.util.Permissions;
 import net.progresstransformer.android.util.Settings;
@@ -95,11 +94,7 @@ public class TransferActivity extends AppCompatActivity
         boolean introShown = mSettings.getBoolean(Settings.Key.INTRO_SHOWN);
         Log.i(TAG, introShown ? "intro has been shown" : "intro has not been shown");
 
-        if (!introShown) {
-            Log.i(TAG, "launching intro activity");
-            Intent introIntent = new Intent(this, IntroActivity.class);
-            startActivityForResult(introIntent, INTRO_REQUEST);
-        } else if (!Permissions.haveStoragePermission(this)) {
+        if (!Permissions.haveStoragePermission(this)) {
             Permissions.requestStoragePermission(this);
         } else {
             finishInit();

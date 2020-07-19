@@ -33,9 +33,9 @@
     <string name="activity_explorer_removable">Removable Storage (%1$s)</string>
     <string name="activity_explorer_hint">Long press to send multiple items</string>
     <string name="activity_explorer_error">Unable to open directory:\n%1$s</string>
-    <string name="activity_explorer_kb">%1$d KB</string>
-    <string name="activity_explorer_mb">%1$d MB</string>
-    <string name="activity_explorer_gb">%1$d GB</string>
+    <string name="activity_explorer_kb" translatable="false">%1$d KB</string>
+    <string name="activity_explorer_mb" translatable="false">%1$d MB</string>
+    <string name="activity_explorer_gb" translatable="false">%1$d GB</string>
 
     <string name="menu_explorer_actions_send">Send</string>
     <string name="menu_explorer_options_show_hidden">Show Hidden Items</string>
