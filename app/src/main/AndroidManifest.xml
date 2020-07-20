@@ -11,7 +11,7 @@
 
     <!-- Enables the broadcast and transfer services to run at boot -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -31,7 +31,8 @@
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
-        android:theme="@style/LightTheme">
+        android:theme="@style/LightTheme"
+        tools:ignore="UnusedAttribute">
 
 
         <activity android:name="net.progresstransformer.android.viewData.AudioPlayer.AudioPlayer"></activity>
