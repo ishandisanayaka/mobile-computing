@@ -235,9 +235,9 @@ public class AudioPlayer extends AppCompatActivity {
         //  getSupportActionBar().setTitle("Now Playing");
 
         pause = (Button) findViewById(R.id.pause);
-
-        previous = (Button) findViewById(R.id.previous);
-        next = (Button) findViewById(R.id.next);
+//
+//        previous = (Button) findViewById(R.id.previous);
+//        next = (Button) findViewById(R.id.next);
 
         sb = (SeekBar) findViewById(R.id.seekBar);
 

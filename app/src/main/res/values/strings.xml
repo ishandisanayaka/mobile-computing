@@ -18,14 +18,14 @@
 
     <!-- Intro activity -->
     <string name="activity_intro_intro_title">Introduction</string>
-    <string name="activity_intro_intro_description">NitroShare makes it easy to send files to other devices on your local network.</string>
+    <string name="activity_intro_intro_description"> makes it easy to send files to other devices on your local network.</string>
     <string name="activity_intro_share_title">Sending Files</string>
-    <string name="activity_intro_share_description">Send files with NitroShare from other Android applications like Gallery, Google Docs, and Google Photos.</string>
+    <string name="activity_intro_share_description">Send files with  from other Android applications like Gallery, Google Docs, and Google Photos.</string>
     <string name="activity_intro_desktop_title">Desktop App</string>
-    <string name="activity_intro_desktop_description">NitroShare for Android works with the desktop app, which is available for Windows, macOS, and Linux.</string>
+    <string name="activity_intro_desktop_description"> for Android works with the desktop app, which is available for Windows, macOS, and Linux.</string>
     <string name="activity_intro_desktop_button">Visit Website</string>
     <string name="activity_intro_perms_title">Permission</string>
-    <string name="activity_intro_perms_description">In order to send and receive files, NitroShare needs your permission to read and write files on your Android device.</string>
+    <string name="activity_intro_perms_description">In order to send and receive files,  needs your permission to read and write files on your Android device.</string>
 
     <!-- Explorer activity -->
     <string name="activity_explorer">Send Items</string>
@@ -41,10 +41,10 @@
     <string name="menu_explorer_options_show_hidden">Show Hidden Items</string>
 
     <!-- Share activity -->
-    <string name="activity_share">Send with NitroShare</string>
+    <string name="activity_share">Send Files</string>
     <string name="activity_share_label">Select a device from the list below to receive the transfer:</string>
-    <string name="activity_share_intent">NitroShare cannot send the data it has received from a third-party application.</string>
-    <string name="activity_share_permissions">NitroShare cannot transfer data without permission to access storage.</string>
+    <string name="activity_share_intent"> cannot send the data it has received from a third-party application.</string>
+    <string name="activity_share_permissions"> cannot transfer data without permission to access storage.</string>
 
     <!-- Settings activity -->
     <string name="activity_settings">Settings</string>
@@ -72,14 +72,14 @@
     <string name="activity_about_version">Version:</string>
     <string name="activity_about_last_updated">Last Updated:</string>
     <string name="activity_about_license" tools:ignore="TypographyOther">
-        <![CDATA[The MIT License (MIT)\n\nCopyright (c) 2018 Nathan Osman\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.]]>
+        <![CDATA[The MIT License (MIT)\n\  Nathan Osman\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.]]>
     </string>
 
     <!-- Transfer service -->
-    <string name="service_transfer_title">NitroShare Transfer</string>
+    <string name="service_transfer_title">Progress Transformer</string>
     <string name="service_transfer_action_stop">Stop</string>
     <string name="service_transfer_action_retry">Retry</string>
-    <string name="service_transfer_server_title">NitroShare Service</string>
+    <string name="service_transfer_server_title"> Service</string>
     <string name="service_transfer_server_listening_text">Listening for incoming transfers</string>
     <string name="service_transfer_status_connecting">Connecting to %1$s…</string>
     <string name="service_transfer_status_receiving">Receiving items from %1$s…</string>

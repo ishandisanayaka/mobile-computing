@@ -56,6 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 Intent intent1 = new Intent(mContext, ExplorerActivity.class);
                 Uri uri = Uri.fromFile(Constant.allMediaList.get(position));
                 intent1.putExtra("uri", position);
+                intent1.putExtra("type","video");
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent1);
             }

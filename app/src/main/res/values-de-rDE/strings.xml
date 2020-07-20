@@ -28,7 +28,7 @@
     <string name="activity_explorer_error">Fehler beim Öffnen von:[&#8230;]</string>
     <string name="menu_explorer_actions_send">Senden</string>
     <string name="menu_explorer_options_show_hidden">Verborgene Objekte anzeigen</string>
-    <string name="activity_share">Mit Nitroshare senden</string>
+    <string name="activity_share">Mit senden</string>
     <string name="activity_share_label">Gerät für den Empfang aus der Liste auswählen:</string>
     <string name="activity_share_intent">Nitroshare kann keine Dateien senden, welche es selbst von anderen Anwendungen empfangen hat.</string>
     <string name="activity_share_permissions">Nitroshare kann ohne Zugriff auf den Speicher keine dateien übertragen.</string>

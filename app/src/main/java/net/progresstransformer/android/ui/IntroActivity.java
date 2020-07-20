@@ -37,15 +37,15 @@ public class IntroActivity extends AppIntro {
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = super.onCreateView(inflater, container, savedInstanceState);
 
-            //noinspection ConstantConditions
-            Button button = (Button) view.findViewById(R.id.websiteButton);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://nitroshare.net"));
-                    startActivity(intent);
-                }
-            });
+//            //noinspection ConstantConditions
+//            Button button = (Button) view.findViewById(R.id.websiteButton);
+//            button.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://nitroshare.net"));
+//                    startActivity(intent);
+//                }
+//            });
 
             return view;
         }
@@ -77,26 +77,26 @@ public class IntroActivity extends AppIntro {
 
         setBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
 
-        addSlide(AppIntroFragment.newInstance(
-                getString(R.string.activity_intro_intro_title),
-                getString(R.string.activity_intro_intro_description),
-                R.drawable.ic_intro_transfer,
-                ContextCompat.getColor(this, R.color.colorPrimary)
-        ));
-
-        addSlide(AppIntroFragment.newInstance(
-                getString(R.string.activity_intro_share_title),
-                getString(R.string.activity_intro_share_description),
-                R.drawable.ic_intro_share,
-                ContextCompat.getColor(this, R.color.colorPrimary)
-        ));
-
-        addSlide(IntroDesktopFragment.newInstance(
-                getString(R.string.activity_intro_desktop_title),
-                getString(R.string.activity_intro_desktop_description),
-                R.drawable.ic_intro_desktop,
-                ContextCompat.getColor(this, R.color.colorPrimary)
-        ));
+//        addSlide(AppIntroFragment.newInstance(
+//                getString(R.string.activity_intro_intro_title),
+//                getString(R.string.activity_intro_intro_description),
+//                R.drawable.ic_intro_transfer,
+//                ContextCompat.getColor(this, R.color.colorPrimary)
+//        ));
+//
+//        addSlide(AppIntroFragment.newInstance(
+//                getString(R.string.activity_intro_share_title),
+//                getString(R.string.activity_intro_share_description),
+//                R.drawable.ic_intro_share,
+//                ContextCompat.getColor(this, R.color.colorPrimary)
+//        ));
+//
+//        addSlide(IntroDesktopFragment.newInstance(
+//                getString(R.string.activity_intro_desktop_title),
+//                getString(R.string.activity_intro_desktop_description),
+//                R.drawable.ic_intro_desktop,
+//                ContextCompat.getColor(this, R.color.colorPrimary)
+//        ));
 
         // Determine if the permission slide needs to be shown or not
         mShowPermissionSlide = !Permissions.haveStoragePermission(this);
@@ -104,38 +104,40 @@ public class IntroActivity extends AppIntro {
         // We only need to ask for the permission if the user is running Marshmallow or higher; on
         // previous versions of Android permissions are granted by default
         if (mShowPermissionSlide) {
-            addSlide(AppIntroFragment.newInstance(
-                    getString(R.string.activity_intro_perms_title),
-                    getString(R.string.activity_intro_perms_description),
-                    R.drawable.ic_intro_lock,
-                    ContextCompat.getColor(this, R.color.colorPrimary)
-            ));
+//            addSlide(AppIntroFragment.newInstance(
+//                    getString(R.string.activity_intro_perms_title),
+//                    getString(R.string.activity_intro_perms_description),
+//                    R.drawable.ic_intro_lock,
+//                    ContextCompat.getColor(this, R.color.colorPrimary)
+//            ));
         }
     }
 
-    @Override
-    public void onSkipPressed(androidx.fragment.app.Fragment currentFragment) {
-        super.onSkipPressed(currentFragment);
-
-        if (mShowPermissionSlide) {
-            pager.setCurrentItem(3);
-        } else {
-            setResult(RESULT_OK);
-            finish();
-        }
-    }
+//    @Override
+//    public void onSkipPressed(androidx.fragment.app.Fragment currentFragment) {
+//        super.onSkipPressed(currentFragment);
+//
+//        pager.setCurrentItem(3);
+////        if (mShowPermissionSlide) {
+////            pager.setCurrentItem(3);
+////        } else {
+////            setResult(RESULT_OK);
+////            finish();
+////        }
+//    }
 
 
     @Override
     public void onDonePressed(androidx.fragment.app.Fragment currentFragment) {
         super.onDonePressed(currentFragment);
 
-        if (mShowPermissionSlide) {
-            Permissions.requestStoragePermission(this);
-        } else {
-            setResult(RESULT_OK);
-            finish();
-        }
+        Permissions.requestStoragePermission(this);
+//        if (mShowPermissionSlide) {
+//            Permissions.requestStoragePermission(this);
+//        } else {
+//            setResult(RESULT_OK);
+//            finish();
+//        }
     }
 
 

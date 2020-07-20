@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 
 import net.progresstransformer.android.R;
 import net.progresstransformer.android.ui.explorer.ExplorerActivity;
+import net.progresstransformer.android.viewData.AudioLoder.AudioRecycleViewAdaptor;
 import net.progresstransformer.android.viewData.Database.DBHelper;
 import net.progresstransformer.android.viewData.VideoLoder.Constant;
 
@@ -49,14 +50,16 @@ public class PdfRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         Uri uri = Uri.fromFile(Constant.allpdfList.get(position));
 
 
-        Glide.with(mContext)
-                .load(uri).thumbnail(0.1f).into(((FileLayoutHolder) holder).thumbnail);
+//        Glide.with(mContext)
+//                .load(uri).thumbnail(0.1f).into(((FileLayoutHolder) holder).thumbnail);
+        ((FileLayoutHolder) holder).thumbnail.setImageResource(R.drawable.index_pdf);
         ((FileLayoutHolder) holder).ic_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(mContext, ExplorerActivity.class);
                 Uri uri = Uri.fromFile(Constant.allpdfList.get(position));
                 intent1.putExtra("uri", position);
+                intent1.putExtra("type","pdf");
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent1);
             }

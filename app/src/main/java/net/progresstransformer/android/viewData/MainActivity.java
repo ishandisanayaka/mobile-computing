@@ -23,7 +23,7 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     public static long progress1;
-    private static DBHelper dbHelper;
+    public static DBHelper dbHelper;
 
     private DrawerLayout drawer;
     private File directory;

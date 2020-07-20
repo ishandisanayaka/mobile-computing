@@ -49,15 +49,17 @@ public class AudioRecycleViewAdaptor extends RecyclerView.Adapter<RecyclerView.V
         //we will load thumbnail using glid library
         Uri uri = Uri.fromFile(Constant.allaudioList.get(position));
 
-
-        Glide.with(mContext)
-                .load(uri).thumbnail(0.1f).into(((FileLayoutHolder) holder).thumbnail);
+//
+//        Glide.with(mContext)
+//                .load(uri).thumbnail(0.1f).into(((FileLayoutHolder) holder).thumbnail);
+        ((FileLayoutHolder) holder).thumbnail.setImageResource(R.drawable.images_song);
         ((FileLayoutHolder) holder).ic_more_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(mContext, ExplorerActivity.class);
                 Uri uri = Uri.fromFile(Constant.allaudioList.get(position));
                 intent1.putExtra("uri", position);
+                intent1.putExtra("type","audio");
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent1);
             }

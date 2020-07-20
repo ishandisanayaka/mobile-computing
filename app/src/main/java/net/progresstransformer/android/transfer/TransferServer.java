@@ -147,7 +147,7 @@ class TransferServer implements Runnable {
                     String unknownDeviceName = mContext.getString(
                             R.string.service_transfer_unknown_device);
                     mListener.onNewTransfer(
-                            new Transfer(
+                            new Transfer(mContext,
                                     socketChannel,
                                     mSettings.getString(Settings.Key.TRANSFER_DIRECTORY),
                                     mSettings.getBoolean(Settings.Key.BEHAVIOR_OVERWRITE),

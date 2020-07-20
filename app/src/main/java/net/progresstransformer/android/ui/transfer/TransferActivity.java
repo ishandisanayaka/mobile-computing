@@ -97,8 +97,9 @@ public class TransferActivity extends AppCompatActivity
 
         if (!introShown) {
             Log.i(TAG, "launching intro activity");
-            Intent introIntent = new Intent(this, IntroActivity.class);
-            startActivityForResult(introIntent, INTRO_REQUEST);
+//            Intent introIntent = new Intent(this, IntroActivity.class);
+//            startActivityForResult(introIntent, INTRO_REQUEST);
+            Permissions.requestStoragePermission(this);
         } else if (!Permissions.haveStoragePermission(this)) {
             Permissions.requestStoragePermission(this);
         } else {

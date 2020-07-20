@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -54,6 +55,8 @@ public class PlayerVideo extends AppCompatActivity {
         mediaController.setAnchorView(videoView);
         videoView.setMediaController(mediaController);
 
+        Log.d("aa", String.valueOf(urlOfVideo));
+
         if (progressAttay1.isEmpty()) {
             lastPosition = videoView.getCurrentPosition();
             dbHelper.insertData(Constant.allMediaList.get(positionOfArray).getName(), String.valueOf(urlOfVideo), String.valueOf(lastPosition));
@@ -67,6 +70,7 @@ public class PlayerVideo extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     lastPosition = videoView.getCurrentPosition();
                     String urlOfVideoString = String.valueOf(urlOfVideo);
+
                     dbHelper.updateProgress(String.valueOf(lastPosition), urlOfVideoString);
                     videoView.seekTo(lastPosition);
                     videoView.start();
@@ -84,6 +88,7 @@ public class PlayerVideo extends AppCompatActivity {
                 }
             });
             builder.show();
+            Log.d("aa", String.valueOf(lastPosition));
 //            ArrayList<HashMap<String, String>> progressAttay=dbHelper.getvideoData(String.valueOf(urlOfVideo));
 //            lastPosition=Integer.parseInt(progressAttay.get(0).get("progress"));
         }

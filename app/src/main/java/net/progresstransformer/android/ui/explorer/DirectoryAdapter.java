@@ -1,5 +1,6 @@
 package net.progresstransformer.android.ui.explorer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -51,6 +52,7 @@ class DirectoryAdapter extends ArrayAdapter<File> {
     /**
      * Initialize the list of files
      */
+    @SuppressLint("StringFormatInvalid")
     private void init() {
         File[] files = new File(mDirectory).listFiles();
         if (files == null) {

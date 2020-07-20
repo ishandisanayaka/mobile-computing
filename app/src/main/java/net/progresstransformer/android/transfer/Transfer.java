@@ -1,5 +1,12 @@
 package net.progresstransformer.android.transfer;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
@@ -9,7 +16,14 @@ import net.progresstransformer.android.bundle.FileItem;
 import net.progresstransformer.android.bundle.Item;
 import net.progresstransformer.android.bundle.UrlItem;
 import net.progresstransformer.android.discovery.Device;
+import net.progresstransformer.android.viewData.Database.DBHelper;
+import net.progresstransformer.android.viewData.MainActivity;
+import net.progresstransformer.android.viewData.PlayVideo.PlayerVideo;
+import net.progresstransformer.android.viewData.VideoLoder.Constant;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.InetSocketAddress;
@@ -32,6 +46,9 @@ public class Transfer implements Runnable {
 
     private static final int CHUNK_SIZE = 65536;
     private static final Gson mGson = new Gson();
+    public DBHelper dbHelper;
+    public Context mcontext;
+
 
     /**
      * Listener for status changes
@@ -100,13 +117,14 @@ public class Transfer implements Runnable {
      * @param overwrite         true to overwrite existing files
      * @param unknownDeviceName device name shown before being received
      */
-    public Transfer(SocketChannel socketChannel, String transferDirectory, boolean overwrite, String unknownDeviceName) throws IOException {
+    public Transfer(Context context,SocketChannel socketChannel, String transferDirectory, boolean overwrite, String unknownDeviceName) throws IOException {
         mTransferStatus = new TransferStatus(unknownDeviceName,
                 TransferStatus.Direction.Receive, TransferStatus.State.Transferring);
         mTransferDirectory = transferDirectory;
         mOverwrite = overwrite;
         mSocketChannel = socketChannel;
         mSocketChannel.configureBlocking(false);
+        mcontext=context;
     }
 
     /**
@@ -241,6 +259,7 @@ public class Transfer implements Runnable {
         switch (itemType) {
             case FileItem.TYPE_NAME:
                 mItem = new FileItem(mTransferDirectory, map, mOverwrite);
+
                 break;
             case UrlItem.TYPE_NAME:
                 mItem = new UrlItem(map);
@@ -257,6 +276,7 @@ public class Transfer implements Runnable {
             processNext();
         }
     }
+
 
     /**
      * Process item contents
@@ -407,9 +427,18 @@ public class Transfer implements Runnable {
     /**
      * Perform the transfer until it completes or an error occurs
      */
+    public String getdata;
+    public String filename;
+    public String progressReceived;
+    public String typeReceived;
+    public String fileNamereceived;
+
     @Override
     public void run() {
+
+        dbHelper=new DBHelper(mcontext);
         try {
+            Log.d("aa","652545565");
             // Indicate which operations select() should select for
             SelectionKey selectionKey = mSocketChannel.register(
                     mSelector,
@@ -449,6 +478,70 @@ public class Transfer implements Runnable {
                 if (selectionKey.isWritable()) {
                     if (!sendNextPacket()) {
                         if (mTransferStatus.getDirection() == TransferStatus.Direction.Receive) {
+
+                            getdata=readFile();
+                            String[] getdataList=getdata.split(" ");
+
+                            for(int i=0; i<getdataList.length; i++){
+                                if (i==0){
+                                    progressReceived=getdataList[0];
+                                }else if(i==getdataList.length-1){
+                                    typeReceived=getdataList[getdataList.length-1];
+                                }else{
+                                    if (i==1){
+                                        fileNamereceived=getdataList[1];
+                                    }else {
+                                        fileNamereceived += getdataList[i];
+                                        }
+                                    }
+                            }
+                            File storage = Environment.getExternalStorageDirectory();
+                            File downloads = new File(storage, "Download");
+                            String nitroShare1=new File(downloads, "NitroShare").getAbsolutePath();
+                            //String uri=nitroShare1+"/"+fileNamereceived;
+                            String uri="file:///storage/emulated/0/Download/NitroShare/"+fileNamereceived;
+                            Uri uri1= Uri.parse(uri);
+                            if (typeReceived.equals("video\n")){
+                                Log.d("aaa",progressReceived);
+
+
+
+                                ArrayList<HashMap<String, String>> progressAttay1 = dbHelper.getvideoData(String.valueOf(uri1));
+                                if (progressAttay1.isEmpty()) {
+                                    dbHelper.insertData(fileNamereceived, uri, progressReceived);
+                                    Log.d("aaa","add neww");
+                                    //Log.d("aa",progressReceived);
+                                    //Constant.allSendToDB.add(String.valueOf(urlOfVideo));
+                                } else {
+                                    dbHelper.updateProgress(progressReceived, uri);
+                                    Log.d("aaa","update neww");
+                                }
+                                Log.d("aaa","sfkhksdgldsgl"+dbHelper.getvideoData(String.valueOf(uri1)).get(0).get("progress"));
+                                Log.d("aaa",uri);
+                            }else if (typeReceived.equals("audio\n")){
+                                ArrayList<HashMap<String, String>> progressAttay1 = dbHelper.getAudioData(String.valueOf(uri1));
+                                if (progressAttay1.isEmpty()) {
+                                    dbHelper.insertAudioData(fileNamereceived, uri, progressReceived);
+                                    //Constant.allSendToDB.add(String.valueOf(urlOfVideo));
+                                } else {
+                                    dbHelper.updateAudioProgress(progressReceived, uri);
+                                }
+
+                            }else if (typeReceived.equals("pdf\n")){
+                                ArrayList<HashMap<String, String>> progressAttay1 = dbHelper.getPdfData(String.valueOf(uri1));
+                                if (progressAttay1.isEmpty()) {
+                                    dbHelper.insertPdfData(fileNamereceived, uri, progressReceived);
+                                    //Constant.allSendToDB.add(String.valueOf(urlOfVideo));
+                                } else {
+                                    dbHelper.updatePdfPageNumber(progressReceived, uri);
+                                }
+
+                            }
+
+
+                            Log.d("aa",progressReceived);
+                            Log.d("aa",typeReceived);
+                            Log.d("aa",fileNamereceived);
                             break;
                         } else {
                             selectionKey.interestOps(SelectionKey.OP_READ);
@@ -478,5 +571,47 @@ public class Transfer implements Runnable {
                 notifyStatusChangedListeners();
             }
         }
+    }
+    public String readNameFile() {
+        File storage = Environment.getExternalStorageDirectory();
+        File downloads = new File(storage, "Download");
+        File nitroShare=new File(downloads, "NitroShare");
+        String  sample=new File(nitroShare, "filename").getAbsolutePath();
+        File fileEvents = new File(sample);
+        StringBuilder text = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileEvents));
+            String line;
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+            br.close();
+        } catch (IOException e) {
+            Log.d("aa", String.valueOf(e));
+        }
+        String result = text.toString();
+        return result;
+    }
+    public String readFile() {
+        File storage = Environment.getExternalStorageDirectory();
+        File downloads = new File(storage, "Download");
+        File nitroShare=new File(downloads, "NitroShare");
+        String  sample=new File(nitroShare, "sample").getAbsolutePath();
+        File fileEvents = new File(sample);
+        StringBuilder text = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileEvents));
+            String line;
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+                text.append('\n');
+            }
+            br.close();
+        } catch (IOException e) {
+            Log.d("aa", String.valueOf(e));
+        }
+        String result = text.toString();
+        return result;
     }
 }
