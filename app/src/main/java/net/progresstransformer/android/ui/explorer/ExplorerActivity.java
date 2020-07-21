@@ -126,6 +126,13 @@ public class ExplorerActivity extends AppCompatActivity  {
         if (type.equals("video")){
             urlOfVideo = Uri.fromFile(Constant.allMediaList.get(positionOfArray));
             filename = Constant.allMediaList.get(positionOfArray).getName();
+//            String a= String.valueOf(Constant.allMediaList.get(positionOfArray));
+//            Log.d("aaaa","jgjgkjkl5556"+a);
+//            String[] getdataList=a.split("");
+//            Log.d("aaaa", String.valueOf(getdataList));
+//            String b=getdataList[getdataList.length-1];
+//            Log.d("aaaa","jgjgkjkl5556"+b);
+
             progressAttay1 = dbHelper.getvideoData(String.valueOf(urlOfVideo));
             if (!progressAttay1.isEmpty()) {
                 lastPosition = Integer.parseInt(progressAttay1.get(0).get("progress"));
@@ -162,7 +169,7 @@ public class ExplorerActivity extends AppCompatActivity  {
         generateNoteOnSD(this, "sample", String.valueOf(lastPosition)+" "+filename+" "+type);
         //generateNoteOnSD( this, "filename", filename);
 
-        Toast.makeText(this, readFile(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, readFile(), Toast.LENGTH_SHORT).show();
 
         progress_text=Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/Notes/sample"));
 

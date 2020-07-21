@@ -63,7 +63,7 @@ public class IntroActivity extends AppIntro {
 
         @Override
         protected int getLayoutId() {
-            return R.layout.fragment_intro_desktop;
+            return 0;
         }
     }
 

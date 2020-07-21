@@ -31,21 +31,6 @@ public class AboutActivity extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException ignored) {
         }
 
-        if (packageInfo != null) {
-            Date lastUpdateDate = new Date(packageInfo.lastUpdateTime);
 
-            ((TextView) findViewById(R.id.version)).setText(
-                    String.format(
-                            Locale.getDefault(),
-                            "%s (%d)",
-                            packageInfo.versionName,
-                            packageInfo.versionCode
-                    )
-            );
-
-            ((TextView) findViewById(R.id.lastUpdated)).setText(
-                    DateFormat.getDateInstance().format(lastUpdateDate)
-            );
-        }
     }
 }

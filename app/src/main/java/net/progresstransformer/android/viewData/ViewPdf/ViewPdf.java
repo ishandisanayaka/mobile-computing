@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +49,8 @@ public class ViewPdf extends AppCompatActivity {
         if (progressAttay2.isEmpty()) {
             lastPage = pdfView.getCurrentPage();
             dbHelper.insertPdfData(Constant.allMediaList.get(positionOfArray).getName(), String.valueOf(urlOfPdf), String.valueOf(lastPage));
+            Log.d("qq","euwdhjsdhgjhsdjg");
+            viewPdf();
             //Constant.allpdfSendToDB.add(String.valueOf(urlOfPdf));
         } else {
 //            ArrayList<HashMap<String, String>> progressAttay=dbHelper.getPdfData(String.valueOf(urlOfPdf));
@@ -67,6 +70,7 @@ public class ViewPdf extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     ArrayList<HashMap<String, String>> progressAttay = dbHelper.getPdfData(String.valueOf(urlOfPdf));
                     lastPage = Integer.parseInt(progressAttay.get(0).get("progress"));
+                    Log.d("qq", String.valueOf(lastPage));
                     viewPdf();
                     dialog.cancel();
                 }
