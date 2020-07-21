@@ -30,7 +30,5 @@ public class AboutActivity extends AppCompatActivity {
             packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
         } catch (PackageManager.NameNotFoundException ignored) {
         }
-
-
     }
 }

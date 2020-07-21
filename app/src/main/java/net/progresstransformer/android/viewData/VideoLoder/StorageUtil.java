@@ -15,9 +15,6 @@ import java.util.Set;
 
 /**
  * Helper class for getting all storages directories in an Android device
- * <a href="https://stackoverflow.com/a/40582634/3940133">Solution of this problem</a>
- * Consider to use
- * <a href="https://developer.android.com/guide/topics/providers/document-provider">StorageAccessFramework(SAF)</>
  * if your min SDK version is 19 and your requirement is just for browse and open documents, images, and other files
  *
  * @author Dmitriy Lozenko, HendraWD

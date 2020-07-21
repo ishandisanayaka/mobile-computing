@@ -60,13 +60,6 @@ public class MainActivity extends AppCompatActivity {
             Method.load_Directory_Files(storage);
         }
 
-
-//        allPath= StorageUtil.getStorageDirectories(this);
-//        for (String path:allPath){
-//            directory=new File(path);
-//            Method.load_Directory_Files(directory);
-//        }
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragement()).commit();
 
 
@@ -74,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void checkStorageAccessPermission() {
-        //ContextCompat use to retrieve resources. It provide uniform interface to access resources.
-        // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {

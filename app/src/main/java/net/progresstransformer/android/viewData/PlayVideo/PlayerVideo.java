@@ -44,8 +44,6 @@ public class PlayerVideo extends AppCompatActivity {
         urlOfVideo = Uri.fromFile(Constant.allMediaList.get(positionOfArray));
 
         ArrayList<HashMap<String, String>> progressAttay1 = dbHelper.getvideoData(String.valueOf(urlOfVideo));
-        //int lastPosition1=Integer.parseInt(progressAttay1.get(0).get("name"));
-        //Log.e("aa", String.valueOf(progressAttay1.isEmpty()));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Start the video at the begining?");
@@ -89,21 +87,7 @@ public class PlayerVideo extends AppCompatActivity {
             });
             builder.show();
             Log.d("aa", String.valueOf(lastPosition));
-//            ArrayList<HashMap<String, String>> progressAttay=dbHelper.getvideoData(String.valueOf(urlOfVideo));
-//            lastPosition=Integer.parseInt(progressAttay.get(0).get("progress"));
         }
-
-
-//        videoView.setVideoURI(urlOfVideo);
-//        mediaController.setAnchorView(videoView);
-//        videoView.setMediaController(mediaController);
-
-
-        //ArrayList<HashMap<String, String>> progressAttay=dbHelper.getvideoData(String.valueOf(urlOfVideo));
-
-//        videoView.seekTo(lastPosition);
-        //videoView.start();
-
 
     }
 
@@ -119,14 +103,6 @@ public class PlayerVideo extends AppCompatActivity {
         lastPosition = videoView.getCurrentPosition();
         String urlOfVideoString = String.valueOf(urlOfVideo);
         dbHelper.updateProgress(String.valueOf(lastPosition), urlOfVideoString);
-
-
-        //dbHelper.insertContact(urlOfVideoString, String.valueOf(lastPosition));
-        //dbHelper.updateContact(urlOfVideoString,100);
-        //Cursor res=dbHelper.getCurrentPosition(String.valueOf(urlOfVideo));
-        /// String a=res.getString(1);
-        //  Log.e("aa", a);
-        // Log.e("aa", urlOfVideoString);
 
         super.onPause();
     }

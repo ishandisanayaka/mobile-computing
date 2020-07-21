@@ -70,8 +70,6 @@ public class VideoFragment extends Fragment implements RecyclerViewAdapter.OnNot
 
         recyclerView.setAdapter(recyclerViewAdapter);
 
-//        Intent intent = new Intent(getActivity(), VideoPlayer.class);
-//        startActivity(intent);
         return mView;
 
 
@@ -124,10 +122,5 @@ public class VideoFragment extends Fragment implements RecyclerViewAdapter.OnNot
         intent.putExtra("uri", position);
         startActivity(intent);
     }
-//    public void shareVideo(int position){
-//        Intent intent1 = new Intent(getActivity(), SendVideoToAnotherDevice.class);
-//        Uri uri = Uri.fromFile(Constant.allMediaList.get(position));
-//        intent1.putExtra("uri",position);
-//        startActivity(intent1);
-//    }
+
 }

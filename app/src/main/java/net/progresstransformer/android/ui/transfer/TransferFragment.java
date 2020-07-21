@@ -72,19 +72,6 @@ public class TransferFragment extends Fragment {
         mTextView.setText(R.string.activity_transfer_empty_text);
         parentView.addView(mTextView);
 
-        // Hide the FAB when the user scrolls
-       // final FloatingActionButton fab = getActivity().findViewById(R.id.fab);
-//        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                if (dy > 0) {
-//                    fab.hide();
-//                } else {
-//                    fab.show();
-//                }
-//            }
-//        });
-
         // Enable swipe-to-dismiss
         new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.START | ItemTouchHelper.END) {

@@ -63,13 +63,6 @@ public class TransferActivity extends AppCompatActivity
         ((TextView) navigationView.getHeaderView(0).findViewById(R.id.transfer_subtitle)).setText(
                 getString(R.string.menu_transfer_subtitle, deviceName));
 
-        // Setup the floating action button
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(TransferActivity.this, ExplorerActivity.class));
-//            }
-//        });
 
         // Launch the transfer service if it isn't already running
         TransferService.startStopService(this, mSettings.getBoolean(Settings.Key.BEHAVIOR_RECEIVE));

@@ -51,11 +51,7 @@ public class ViewPdf extends AppCompatActivity {
             dbHelper.insertPdfData(Constant.allMediaList.get(positionOfArray).getName(), String.valueOf(urlOfPdf), String.valueOf(lastPage));
             Log.d("qq","euwdhjsdhgjhsdjg");
             viewPdf();
-            //Constant.allpdfSendToDB.add(String.valueOf(urlOfPdf));
         } else {
-//            ArrayList<HashMap<String, String>> progressAttay=dbHelper.getPdfData(String.valueOf(urlOfPdf));
-//            lastPage=Integer.parseInt(progressAttay.get(0).get("progress"));
-            // Set up the buttons
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -77,25 +73,6 @@ public class ViewPdf extends AppCompatActivity {
             });
             builder.show();
         }
-//        viewPdf();
-//        pdfView.fromUri(urlOfPdf)
-//                .defaultPage(lastPage)
-//                .enableSwipe(true)
-//        .swipeHorizontal(false)
-//        .onDraw(new OnDrawListener() {
-//            @Override
-//            public void onLayerDrawn(Canvas canvas, float pageWidth, float pageHeight, int displayedPage) {
-//
-//            }
-//        }).onPageChange(new OnPageChangeListener() {
-//            @Override
-//            public void onPageChanged(int page, int pageCount) {
-//
-//                dbHelper.updatePdfPageNumber(String.valueOf(pdfView.getCurrentPage()), String.valueOf(urlOfPdf));
-//
-//            }
-//        }).enableAnnotationRendering(true)
-//        .load();
     }
 
     private void viewPdf() {
